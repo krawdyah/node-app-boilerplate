@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ appname }} {{ title }}</title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+  <link rel="stylesheet" href="stylesheets/application.css">
+</head>
+<body>
+  <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
+    <a class="pure-menu-heading" href="/">{{ appname }}</a>
+    <ul>
+      <li><a href='/'>Home</a></li>
+      {{^user}}
+        <li><a href='/signup'>Register</a></li>
+        <li><a href='/signin'>Login</a></li>
+      {{/user}}
+    </ul>
+
+    <ul class='fright'>
+      {{#user}}
+        <li>Hey, {{ user.name }}</li>
+        <li><a href='/logout'>Logout</a></li>
+      {{/user}}
+    </ul>
+  </div>
+
+  {{{ yield }}}
+
+  <div class='l-box ribbon'>
+    <h2>Get started now</h2>
+    <a href='/signin' class='pure-button pure-button-success'>Sign In</a>
+  </div>
+
+  <div class='footer'>
+    <p>Sorta 2013</p>
+  </div>
+
+  <script src="http://localhost:35729/livereload.js"></script>
+  <script src="javascripts/application.min.js"></script>
+</body>
+</html>
