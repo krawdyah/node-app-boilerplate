@@ -3,7 +3,7 @@ var statics = require('../app/controllers/statics')
   , auth = require('./middlewares/authorization');
 
 module.exports = function(app, passport){
-	app.get('/', statics.index);
+  app.get('/', statics.index);
   app.get('/logout', users.logout);
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);

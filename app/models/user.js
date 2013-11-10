@@ -31,7 +31,7 @@ UserSchema.path('email').validate(function (email, fn) {
     User.find({ email: email }).exec(function (err, users) {
       fn(!err && users.length === 0)
     })
-  } else fn(true)
+  } else { fn(true) }
 }, 'Email already exists')
 
 UserSchema.path('hashed_password').validate(function (hashed_password) {
@@ -39,12 +39,11 @@ UserSchema.path('hashed_password').validate(function (hashed_password) {
 }, 'Password cannot be blank')
 
 UserSchema.pre('save', function(next) {
-  if (!this.isNew) return next()
+  if (!this.isNew) { return next() }
 
-  if (!validatePresenceOf(this.password))
+  if (!validatePresenceOf(this.password)) {
     next(new Error('Invalid password'))
-  else
-    next()
+  } else { next() }
 })
 
 UserSchema.methods = {
@@ -81,7 +80,7 @@ UserSchema.methods = {
    */
 
   encryptPassword: function (password) {
-    if (!password) return ''
+    if (!password) { return '' }
     var encrypred
     try {
       encrypred = crypto.createHmac('sha1', this.salt).update(password).digest('hex')

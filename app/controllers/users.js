@@ -40,8 +40,8 @@ exports.update = function (request, response, next) {
     function(err, user){ 
       user.password = request.body.password 
       user.save(function (err, user) {
-        if (err) return next(err)
-        if (!user) return next(new Error('Failed to load User ' + id))
+        if (err) { return next(err) }
+        if (!user) { return next(new Error('Failed to load User ' + id)) }
       });
     });
   response.redirect('/')
@@ -60,7 +60,7 @@ exports.create = function (request, response) {
     }
 
     request.logIn(user, function(err) {
-      if (err) return next(err)
+      if (err) { return next(err) }
       return response.redirect('/')
     })
   })

@@ -4,6 +4,7 @@ var express = require('express')
 module.exports = function(app, config, passport) {
 
   app.configure(function () {
+    app.use(express.logger('dev'));
     app.use(express.compress());
     app.use(express.static(config.root + '/public'));
     app.set('port', config.port);
@@ -31,7 +32,6 @@ module.exports = function(app, config, passport) {
       appname: 'Node Boilerplate'
     });
 
-    app.use(express.logger('dev'));
     app.configure('development', function () {
       app.locals.pretty = true
     })
