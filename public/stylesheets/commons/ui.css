@@ -1,0 +1,77 @@
+/* line 1, ../sass/commons/ui.sass */
+.pure-button-success,
+.pure-button-error,
+.pure-button-warning,
+.pure-button-secondary {
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* line 8, ../sass/commons/ui.sass */
+.pure-button-primary {
+  background: #02a6eb;
+}
+
+/* line 11, ../sass/commons/ui.sass */
+.pure-button-success {
+  background: #1cb841;
+}
+
+/* line 14, ../sass/commons/ui.sass */
+.pure-button-error {
+  background: #ca3c3c;
+}
+
+/* line 17, ../sass/commons/ui.sass */
+.pure-button-warning {
+  background: #df7514;
+}
+
+/* line 20, ../sass/commons/ui.sass */
+.pure-button-secondary {
+  background: #42b8dd;
+}
+
+/* line 23, ../sass/commons/ui.sass */
+.pure-button-xsmall {
+  font-size: 70%;
+}
+
+/* line 26, ../sass/commons/ui.sass */
+.pure-button-small {
+  font-size: 85%;
+}
+
+/* line 29, ../sass/commons/ui.sass */
+.pure-button-large {
+  font-size: 110%;
+}
+
+/* line 32, ../sass/commons/ui.sass */
+.pure-button-xlarge {
+  font-size: 125%;
+}
+
+/* line 35, ../sass/commons/ui.sass */
+.header {
+  margin: 0 0;
+}
+/* line 37, ../sass/commons/ui.sass */
+.header .pure-menu {
+  padding: 0.5em;
+}
+/* line 40, ../sass/commons/ui.sass */
+.header .pure-menu li a:hover, .header .pure-menu li a:focues {
+  background: none;
+  border: none;
+  color: #aaaaaa;
+}
+
+/* line 45, ../sass/commons/ui.sass */
+.footer {
+  background: #111111;
+  color: #666666;
+  text-align: center;
+  padding: 1em;
+  font-size: 80%;
+}
