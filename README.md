@@ -6,6 +6,7 @@
 - Hogan
 - Grunt
 - Passport
+- Compass
 - Coffee
 
 #### Usage
