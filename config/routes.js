@@ -12,7 +12,7 @@ module.exports = function(app, passport){
   app.post('/users/session',
     passport.authenticate('local', {
       failureRedirect: '/',
-    }), users.session)
+    }), users.session);
   app.get('/profile', auth.requiresAuth, users.profile);
   app.post('/users/edit', auth.requiresAuth, users.update);
 };

@@ -18,13 +18,13 @@ fs.readdirSync(modelsPath).forEach(function (file) {
   }
 });
 
-require('./config/auth')(passport, config)
+require('./config/auth')(passport, config);
 
 var app = express();
 
-require('./config/express')(app, config, passport)
+require('./config/express')(app, config, passport);
 require('./config/routes')(app, passport);
 
-app.listen(config.port, config.host, function(){ console.log('Paaaarla!') });
+app.listen(config.port, config.host, function(){ console.log('Paaaarla!'); });
 
-exports = module.exports = app
+exports = module.exports = app;

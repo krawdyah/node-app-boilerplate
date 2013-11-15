@@ -29,8 +29,8 @@ module.exports = {
   },
 
   logout: function (request, response) {
-    request.logout()
-    response.redirect('/')
+    request.logout();
+    response.redirect('/');
   },
 
   session: function (request, response) {
@@ -39,19 +39,19 @@ module.exports = {
   },
 
   update: function (request, response, next) {
-    User.findById(request.user.id, 
-      function(err, user){ 
-        user.password = request.body.password 
+    User.findById(request.user.id,
+      function(err, user){
+        user.password = request.body.password;
         user.save(function (err, user) {
-          if (err) { return next(err) }
-          if (!user) { return next(new Error('Failed to load User ' + id)) }
+          if (err) { return next(err); }
+          if (!user) { return next(new Error('Failed to load User ' + id)); }
         });
       });
-    response.redirect('/')
+    response.redirect('/');
   },
 
   create: function (request, response) {
-    var user = new User(request.body)
+    var user = new User(request.body);
     user.save(function (err) {
       if (err) {
         console.log(err.errors);
@@ -59,14 +59,14 @@ module.exports = {
           errors: err.errors,
           user: user,
           title: 'Sign Up'
-        })
+        });
       }
 
       request.logIn(user, function(err) {
-        if (err) { return next(err) }
-        return response.redirect('/')
-      })
-    })
+        if (err) { return next(err); }
+        return response.redirect('/');
+      });
+    });
   },
 
   profile: function (request, response) {
@@ -75,9 +75,9 @@ module.exports = {
      User
       .findById(request.user._id)
       .exec(function(err, data) {
-        if (err) { console.log(err) }
+        if (err) { console.log(err); }
         response.send( JSON.stringify(data) );
       });
   }
-}
+};
 

@@ -8,4 +8,4 @@ module.exports = {
       partials: { outlet: '_banner' }
     });
   }
-}
+};

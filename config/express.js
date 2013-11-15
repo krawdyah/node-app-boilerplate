@@ -9,19 +9,19 @@ module.exports = function(app, config, passport) {
     app.use(express.static(config.root + '/public'));
     app.set('port', config.port);
     app.set('views', config.root + '/app/views');
-    
+
     app.set('view engine', 'html');
     app.set('layout', 'application');
     app.set('view cache');
     app.engine('html', hogan);
 
-    app.use(express.cookieParser())
+    app.use(express.cookieParser());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
 
     app.use(express.session({ secret: 'wat' }));
-    app.use(passport.initialize())
-    app.use(passport.session())
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     app.use(app.router);
     app.use(function(req, res) {
@@ -33,7 +33,7 @@ module.exports = function(app, config, passport) {
     });
 
     app.configure('development', function () {
-      app.locals.pretty = true
-    })
+      app.locals.pretty = true;
+    });
   });
 };

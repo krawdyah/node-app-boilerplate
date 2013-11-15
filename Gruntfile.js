@@ -29,9 +29,9 @@ module.exports = function (grunt) {
       }
     },
     jshint: {
-      files: ['app/**/*.js', 'config/*.js', 'public/javascripts/*.js'],
+      files: ['server.js', 'app/**/*.js', 'config/*.js', 'public/javascripts/*.js'],
       options: {
-        asi: true,
+        asi: false,
         curly: true,
         eqeqeq: true,
         eqnull: true,
