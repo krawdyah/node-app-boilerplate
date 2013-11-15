@@ -5,6 +5,7 @@ var path = require('path'),
 var config = {
   development: {
     root: rootPath,
+    host: 'localhost',
     app: {
       name: 'app'
     },
@@ -14,6 +15,7 @@ var config = {
 
   test: {
     root: rootPath,
+    host: 'localhost',
     app: {
       name: 'app'
     },
@@ -23,6 +25,7 @@ var config = {
 
   production: {
     root: rootPath,
+    host: process.env.OPENSHIFT_NODEJS_IP,
     app: {
       name: 'app'
     },
