@@ -9,14 +9,13 @@ module.exports = function (grunt) {
         options: {
           sassDir: 'public/stylesheets/sass',
           cssDir: 'public/stylesheets',
-          outputStyle: 'compressed',
-          watch: true
+          outputStyle: 'compressed'
         }
       }
     },
     coffee: {
       compile: {
-        files: {  
+        files: {
           'public/javascripts/application.js': [ 'public/javascripts/_coffee/*.coffee' ]
         }
       }
@@ -41,9 +40,14 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      js: {
+      tasks: ['jshint', 'compass', 'coffee'],
+      jshint: {
         files: ['<%= jshint.files %>'],
-        tasks: ['server', 'jshint', 'coffee']
+        tasks: ['jshint']
+      },
+      coffee: {
+        files: ['public/javascripts/_coffee/*.coffee'],
+        tasks: ['coffee']
       },
       compass: {
         files: ['public/stylesheets/sass/**/*.sass'],
@@ -95,5 +99,5 @@ module.exports = function (grunt) {
     grunt.event.emit('server', this.async());
   });
 
-  grunt.registerTask('default', ['server', 'jshint', 'coffee', 'compass', 'uglify', 'watch']);
+  grunt.registerTask('default', ['server', 'jshint', 'coffee', 'compass', 'watch']);
 };
