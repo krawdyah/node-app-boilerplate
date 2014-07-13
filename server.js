@@ -22,6 +22,7 @@ require('./config/auth')(passport, config);
 
 var app = express();
 
+require('./app/helpers')(config);
 require('./config/express')(app, config, passport);
 require('./config/routes')(app, passport);
 

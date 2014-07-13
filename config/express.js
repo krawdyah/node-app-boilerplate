@@ -1,39 +1,37 @@
 var express = require('express')
-  , hogan = require('hogan-express');
+  , app = express()
+  , morgan = require('morgan')
+  , serveStatic = require('serve-static')
+  , compression = require('compression')
+  , session = require('express-session')
+  , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
+  , methodOverride = require('method-override')
+  , hbs = require('hbs')
+  , env = process.env.NODE_ENV || 'development';
 
-module.exports = function(app, config, passport) {
 
-  app.configure(function () {
-    app.use(express.logger('dev'));
-    app.use(express.compress());
-    app.use(express.static(config.root + '/public'));
-    app.set('port', config.port);
-    app.set('views', config.root + '/app/views');
+module.exports = function(app, config, passport){
 
-    app.set('view engine', 'html');
-    app.set('layout', 'application');
-    app.set('view cache');
-    app.engine('html', hogan);
+  app.use(morgan());
+  app.use(compression());
+  app.use(express.static(config.root + '/public'));
 
-    app.use(express.cookieParser());
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
+  app.set('port', config.port);
 
-    app.use(express.session({ secret: 'wat' }));
-    app.use(passport.initialize());
-    app.use(passport.session());
+  app.set('view engine', 'hbs');
+  app.engine('hbs', hbs.__express);
+  app.set('views', config.root + '/app/views');
+  app.set('view cache');
 
-    app.use(app.router);
-    app.use(function(req, res) {
-      res.status(404).render('404', { title: '404' });
-    });
+  app.use(cookieParser());
+  app.use(bodyParser());
+  app.use(methodOverride());
+  app.use(session({ secret: 'wat' }));
 
-    app.locals({
-      appname: 'Node Boilerplate'
-    });
+  app.use(passport.initialize());
+  app.use(passport.session());
 
-    app.configure('development', function () {
-      app.locals.pretty = true;
-    });
-  });
-};
+  app.locals.appname = 'Node Boilerplate';
+
+}

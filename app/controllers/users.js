@@ -14,18 +14,12 @@ module.exports = {
       });
   },
 
-  signup: function(request, response){ 
-    response.render('users/index', {
-      title: 'Register Page',
-      partials: { outlet: 'users/_signup' }
-    }); 
+  signup: function(request, response){
+    response.render('users/index', { title: 'Register Page' });
   },
 
   signin: function(request, response){
-    response.render('users/index', {
-      title: 'Login Page',
-      partials: { outlet: 'users/_signin' }
-    });
+    response.render('users/index', { title: 'Login Page' });
   },
 
   logout: function (request, response) {
