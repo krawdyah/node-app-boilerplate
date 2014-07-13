@@ -2,8 +2,8 @@
 
 - Node JS
 - Mongoose
-- Express
-- Hogan
+- Express 4
+- Handlebars
 - Grunt
 - Passport
 - Compass
